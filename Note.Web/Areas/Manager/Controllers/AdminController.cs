@@ -11,7 +11,7 @@ using System.Data;
 namespace Note.Web.Areas.Manager.Controllers
 {
     [Area("Manager")]
-   [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
 
     public class AdminController : Controller
     {
@@ -135,7 +135,7 @@ namespace Note.Web.Areas.Manager.Controllers
         [HttpGet]
         public IActionResult RoleAssign(string id)
         {
-            TempData["userId"] = id;
+            TempData["userId"] = id;  //action arasında veri taşımak istiyorsam
 
             AppUser user = _userManager.FindByIdAsync(id).Result;
 
@@ -180,15 +180,15 @@ namespace Note.Web.Areas.Manager.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, item.Name);
                     await _userManager.UpdateSecurityStampAsync(user);
-                  
-                    
+
+
 
                 }
                 else
                 {
                     await _userManager.RemoveFromRoleAsync(user, item.Name);
                     await _userManager.UpdateSecurityStampAsync(user);
-                  
+
 
                 }
             }

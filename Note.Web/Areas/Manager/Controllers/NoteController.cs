@@ -33,7 +33,7 @@ namespace Note.Web.Areas.Manager.Controllers
 
         public IActionResult Index()
         {
-            var values = _appNoteService.TNotesWithAuthor().ToList();
+            var values = _appNoteService.TNotesWithAuthor().OrderByDescending(x => x.CreatedDate).ToList();
             return View(_mapper.Map<List<AppNoteListVM>>(values));
         }
 

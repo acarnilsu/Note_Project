@@ -10,7 +10,7 @@ namespace Note.Web.Areas.Manager.Controllers
 
 
     [Area("Manager")]
-   [Authorize(Roles = "Admin,Editör,Stajyer")]
+    [Authorize(Roles = "Admin,Editör,Stajyer")]
 
     public class MemberController : Controller
     {
@@ -62,13 +62,13 @@ namespace Note.Web.Areas.Manager.Controllers
 
                 if (userPicture != null && userPicture.Length > 0)
                 {
-                    if(viewModel.ImageUrl!=null)
+                    if (viewModel.ImageUrl != null)
                     {
                         string oldImagePath = $"{Directory.GetCurrentDirectory()}\\wwwroot{viewModel.ImageUrl}";
 
                         System.IO.File.Delete(oldImagePath);
                     }
-              
+
 
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
 
@@ -84,10 +84,6 @@ namespace Note.Web.Areas.Manager.Controllers
                 }
                 else
                     viewModel.ImageUrl = user.ImageUrl;
-
-
-
-
 
                 var result = await _userManager.UpdateAsync(_mapper.Map(viewModel, user));
 
@@ -112,9 +108,7 @@ namespace Note.Web.Areas.Manager.Controllers
                     }
                 }
 
-
             }
-
 
             return View(viewModel);
         }
@@ -128,8 +122,6 @@ namespace Note.Web.Areas.Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> PasswordChange(PasswordChangeVM viewModel)
         {
-
-
 
             if (ModelState.IsValid)
             {
@@ -153,7 +145,7 @@ namespace Note.Web.Areas.Manager.Controllers
                             ViewBag.msg = "Şifreniz Başarılı Bir Şekilde Değiştirilmiştir.";
 
 
-                           
+
                         }
                         else
                         {

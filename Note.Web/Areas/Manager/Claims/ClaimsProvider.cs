@@ -32,7 +32,7 @@ namespace Note.Web.Areas.Manager.Claims
                         {
                             Claim CityClaim = new Claim("City", user.City, ClaimValueTypes.String, "Internal");
 
-                            claimsIdentity.AddClaim(CityClaim);
+                            claimsIdentity.AddClaim(CityClaim);  //claime ekleme
 
                         }
 

@@ -57,7 +57,9 @@ namespace Note.Web.Controllers
         [Authorize(Policy = "AnkaraPolicy")]
         public IActionResult AnkaraPage()
         {
-            return View();
+            var values = _appNoteService.TNotesWithAuthor().Where(x => x.Status == false).OrderByDescending(x => x.CreatedDate).ToList();
+
+            return View(_mapper.Map<List<AppNoteListVM>>(values));
         }
 
 
